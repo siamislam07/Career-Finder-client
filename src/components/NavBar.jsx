@@ -6,8 +6,8 @@ import logo from "../assets/icons/C.gif"
 import { useEffect, useState } from "react";
 
 const NavBar = ({ children }) => {
+    //darkMode functions
     const [theme, setTheme] = useState(localStorage.getItem("theme")? localStorage.getItem("theme"): "light")
-
     const handleChange = e =>{
         if (e.target.checked) {
             setTheme("synthwave")
@@ -16,12 +16,14 @@ const NavBar = ({ children }) => {
             setTheme("cupcake")
         }
     }
-
     useEffect(()=>{
         localStorage.setItem("theme", theme)
         const localTheme = localStorage.getItem("theme");
         document.querySelector("html").setAttribute("data-theme", localTheme)
     },[theme])
+    //darkMode functions ends here
+
+
 
     const navLinks = <>
         <label className="swap swap-rotate">
