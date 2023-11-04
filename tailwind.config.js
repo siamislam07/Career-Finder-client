@@ -10,7 +10,7 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["cupcake", "synthwave",],
+    themes: ["cupcake", "synthwave"],
   },
 }
 
