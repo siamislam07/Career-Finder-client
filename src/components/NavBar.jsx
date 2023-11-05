@@ -5,10 +5,19 @@ import SideBar from "./SideBar";
 import logo from "../assets/icons/C.gif"
 import { useLottie } from "lottie-react";
 import underline from "../assets/animationJson/underline.json"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "./Modal";
+import { AuthContext } from "../providers/AuthProvider";
 
 const NavBar = ({ children }) => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     //darkMode functions
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
     const handleChange = e => {
@@ -25,6 +34,7 @@ const NavBar = ({ children }) => {
         document.querySelector("html").setAttribute("data-theme", localTheme)
     }, [theme])
     //darkMode functions ends here
+
 
     // const phoneRef = useRef<LottieRefCurrentProps>(null);
     const options = {
@@ -48,6 +58,7 @@ const NavBar = ({ children }) => {
         <Modal></Modal>
         <li><NavLink to="/Register" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-300 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Register</NavLink></li>
         <li><NavLink to="/blogs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-blue-800 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Blogs</NavLink></li>
+        <li><a onClick={handleLogOut} className="">Logout</a></li>
     </>
     return (
         <div className="drawer">

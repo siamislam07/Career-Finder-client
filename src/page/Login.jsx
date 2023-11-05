@@ -8,8 +8,12 @@ import github from "../assets/animationJson/github.gif"
 
 import { useLottie } from "lottie-react";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+    const {login, user} = useAuth()
+    console.log(user);
+
     const options = {
         animationData: img,
 
