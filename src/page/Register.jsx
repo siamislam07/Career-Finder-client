@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -24,13 +25,14 @@ const Register = () => {
 
     const { createUser, googleLogIn, githubLogIn } = useAuth()
 
-    
+
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [url, setUrl] = useState('')
 
-    
+
 
 
     const handleRegister = e => {
@@ -53,7 +55,11 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result);
+                toast.success("Register Successful")
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: url
+                })
                 e.target.reset()
             })
             .catch(error => {
@@ -61,29 +67,29 @@ const Register = () => {
                 toast.error(error.message)
                 e.target.reset()
             })
-            
+
     }
 
-    const handleGithubLogIn =()=>{
+    const handleGithubLogIn = () => {
         githubLogIn()
-        .then(result=>{
-            console.log(result);
-        })
-        .catch(error=>{
-            console.log(error);
-            toast.error(error.message)
-        })
+            .then(result => {
+                toast.success("Register Successful")
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error(error.message)
+            })
     }
 
-    const handleGoogleLogIn = ()=>{
+    const handleGoogleLogIn = () => {
         googleLogIn()
-        .then(result=>{
-            console.log(result);
-        })
-        .catch(error=>{
-            console.log(error);
-            toast.error(error.message)
-        })
+            .then(result => {
+                toast.success("Register Successful")
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error(error.message)
+            })
     }
 
 
@@ -101,31 +107,30 @@ const Register = () => {
                         {/* <p className="text-sm mt-4">By creating an account or signing in, you understand and agree to Indeed's Terms. You also acknowledge our Cookie and Privacy policies.</p> */}
 
                         <form className="flex flex-col gap-2" onSubmit={handleRegister}>
-                            <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="text" name="name" placeholder="Your name" onBlur={e => setName(e.target.value)} />
-                            <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" onBlur={e => setEmail(e.target.value)} />
-                            <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="password" name="password" placeholder="Password" onBlur={e => setPassword(e.target.value)} />
-                            <button type="submit" className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300">Login</button>
+                            <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="text" name="name" placeholder="Your name" onBlur={e => setName(e.target.value)} required />
+                            <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" onBlur={e => setEmail(e.target.value)} required />
+                            <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="url" name="url" placeholder="PhotoUrl" onBlur={e => setPassword(e.target.value)} required />
+                            <button type="submit" className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300">Register</button>
                         </form>
-                        
+
                         <div className="mt-10  grid grid-cols-3 items-center text-gray-500 ">
                             <hr className="border-gray-500" />
                             <p className="text-center">OR</p>
                             <hr className="border-gray-500" />
                         </div>
 
-                        <button  onClick={handleGoogleLogIn} className="bg-white shadow-lg hover:scale-105 duration-300 border bg-gradient-to-r from-purple-300 to-indigo-400  w-full rounded-xl mt-5 flex justify-center items-center text-sm">
-                            {/* <span className="">{Views}</span>  */}
+                        <button onClick={handleGoogleLogIn} className="bg-white shadow-lg hover:scale-105 duration-300 border bg-gradient-to-r from-purple-300 to-indigo-400  w-full rounded-xl mt-5 flex justify-center items-center text-sm">
                             <img className="w-10 " src={googles} alt="" />
                             Continue With Google</button>
 
                         <button onClick={handleGithubLogIn} className="bg-white mb-7 shadow-lg hover:scale-105 duration-300 border bg-gradient-to-r from-purple-300 to-indigo-400 w-full rounded-xl mt-5 flex justify-center items-center text-sm">
-                            {/* <span className="">{Views}</span>  */}
+
                             <img className="w-10 " src={github} alt="" />
                             Continue With Github
                         </button>
 
                         <div>
-                            <p className="border-t py-4 border-gray-400">Don't have an Account?<Link to='/register'><span className="underline text-slate-600 ">Register</span></Link></p>
+                            <p className="border-t py-4 border-gray-400">Already have an Account?<Link to='/login'><span className="underline text-slate-600 ">Login</span></Link></p>
                         </div>
                     </div>
 

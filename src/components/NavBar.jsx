@@ -8,6 +8,8 @@ import underline from "../assets/animationJson/underline.json"
 import { useContext, useEffect, useState } from "react";
 import Modal from "./Modal";
 import { AuthContext } from "../providers/AuthProvider";
+import Login from "../page/Login";
+import NavBarProfile from "./NavBarProfile";
 
 const NavBar = ({ children }) => {
     const { user, logOut } = useContext(AuthContext)
@@ -54,11 +56,19 @@ const NavBar = ({ children }) => {
             <svg className="swap-off fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
 
         </label>
-        <li><NavLink to="/" className='btn btn-outline btn-default pt-4 border-t-slate-800 border-b-red-800 border-neutral transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg'>Home</NavLink></li>
-        <Modal></Modal>
-        <li><NavLink to="/Register" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-300 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Register</NavLink></li>
+        <li><NavLink to="/" className='btn btn-outline btn-default pt-2 border-t-slate-800 border-b-red-800 border-neutral normal-case text-lg transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg'>Home</NavLink></li>
+        {/* <Modal></Modal> */}
+        {user ? '' : <li><NavLink to='/login' className="btn btn-outline btn-default pt-2 border-b-amber-600 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none  rounded-lg">Login</NavLink></li>}
+        {user ? '' : <li><NavLink to="/Register" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-300 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Register</NavLink></li>}
+
+        {user && <> <li><NavLink to="/addjob" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-lime-600 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Add A Job</NavLink></li>
+            <li><NavLink to="/myjobs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-600 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">My Jobs</NavLink></li>
+            <li><NavLink to="/appliedjobs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-300 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Applied Jobs</NavLink></li>
+        </>}
+        
+        <li><NavLink to="/alljobs" className='btn btn-outline btn-default pt-2 border-t-slate-800 border-b-red-800 border-neutral normal-case text-lg transition transform  hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg'>All Jobs</NavLink></li>
         <li><NavLink to="/blogs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-blue-800 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Blogs</NavLink></li>
-        <li><a onClick={handleLogOut} className="">Logout</a></li>
+        <NavBarProfile></NavBarProfile>
     </>
     return (
         <div className="drawer">
