@@ -3,27 +3,37 @@
 import { NavLink } from "react-router-dom";
 import SideBar from "./SideBar";
 import logo from "../assets/icons/C.gif"
+import { useLottie } from "lottie-react";
+import underline from "../assets/animationJson/underline.json"
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 const NavBar = ({ children }) => {
     //darkMode functions
-    const [theme, setTheme] = useState(localStorage.getItem("theme")? localStorage.getItem("theme"): "light")
-    const handleChange = e =>{
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
+    const handleChange = e => {
         if (e.target.checked) {
             setTheme("synthwave")
         }
-        else{
+        else {
             setTheme("cupcake")
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem("theme", theme)
         const localTheme = localStorage.getItem("theme");
         document.querySelector("html").setAttribute("data-theme", localTheme)
-    },[theme])
+    }, [theme])
     //darkMode functions ends here
 
+    // const phoneRef = useRef<LottieRefCurrentProps>(null);
+    const options = {
+        animationData: underline,
+        loop: true,
 
+    };
+
+    const { View } = useLottie(options);
 
     const navLinks = <>
         <label className="swap swap-rotate">
@@ -35,7 +45,7 @@ const NavBar = ({ children }) => {
 
         </label>
         <li><NavLink to="/" className='btn btn-outline btn-default pt-4 border-t-slate-800 border-b-red-800 border-neutral transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg'>Home</NavLink></li>
-        <li><NavLink to="/login" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-600 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Login</NavLink></li>
+        <Modal></Modal>
         <li><NavLink to="/Register" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-300 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Register</NavLink></li>
         <li><NavLink to="/blogs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-blue-800 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Blogs</NavLink></li>
     </>
@@ -53,7 +63,11 @@ const NavBar = ({ children }) => {
                         </div>
                         <div className="flex-1 text-3xl font-bold flex items-center ">
                             <img src={logo} className="w-16" alt="logo" />
-                            <p>Career Finder</p>
+                            <div className="flex flex-col justify-center items-center relative">
+                                <p className="bg-gradient-to-r from-slate-400 to-purple-600 bg-clip-text text-transparent  ">Career Finder </p>
+
+                                <span className="absolute  top-4 hidden sm:block" >{View}</span>
+                            </div>
                         </div>
                         <div className="flex-none hidden lg:block">
                             <ul className="menu menu-horizontal gap-5">
