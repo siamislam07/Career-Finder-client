@@ -29,7 +29,7 @@ const NavBar = ({ children }) => {
     // const phoneRef = useRef<LottieRefCurrentProps>(null);
     const options = {
         animationData: underline,
-        loop: true,
+        loop: 2,
 
     };
 
