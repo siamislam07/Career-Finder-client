@@ -65,7 +65,7 @@ const NavBar = ({ children }) => {
             <li><NavLink to="/myjobs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-600 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">My Jobs</NavLink></li>
             <li><NavLink to="/appliedjobs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-amber-300 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Applied Jobs</NavLink></li>
         </>}
-        
+
         <li><NavLink to="/alljobs" className='btn btn-outline btn-default pt-2 border-t-slate-800 border-b-red-800 border-neutral normal-case text-lg transition transform  hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg'>All Jobs</NavLink></li>
         <li><NavLink to="/blogs" className="btn btn-outline btn-default pt-2 border-t-slate-800 border-b-blue-800 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none rounded-lg">Blogs</NavLink></li>
         <NavBarProfile></NavBarProfile>
@@ -76,7 +76,7 @@ const NavBar = ({ children }) => {
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
                 <div className="w-full navbar bg-transparent">
-                    <div className="w-full max-w-[1200px] mx-auto px-[25px]">
+                    <div className="w-full max-w-[1200px] mx-auto ">
                         <div className="flex-none lg:hidden">
                             <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>

@@ -8,11 +8,13 @@ import AddJob from "../page/addjob"
 import MyJobs from "../page/MyJobs"
 import AppliedJobs from "../page/AppliedJobs"
 import AllJobs from "../page/AllJobs"
+import ErrorPage from "../components/ErrorPage"
 
 const Routes = createBrowserRouter([
     {
         path: '/',
         element: <Home />,
+        errorElement:<ErrorPage />,
         children: [
             {
                 path:'/',

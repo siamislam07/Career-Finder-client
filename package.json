@@ -12,7 +12,9 @@
   "dependencies": {
     "@lordicon/element": "^1.2.0",
     "@lordicon/react": "^1.2.0",
+    "antd": "^5.11.0",
     "aos": "^2.3.4",
+    "axios": "^1.6.0",
     "firebase": "^10.5.2",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",

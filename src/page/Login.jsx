@@ -25,6 +25,8 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    
+
     const handleLogin = e => {
         e.preventDefault()
         login(email, password)
@@ -41,7 +43,7 @@ const Login = () => {
     const handleGithubLogIn = () => {
         githubLogIn()
             .then(result => {
-                toast.success("Register Successful")
+                toast.success("Login Successful")
             })
             .catch(error => {
                 console.log(error);
@@ -52,7 +54,7 @@ const Login = () => {
     const handleGoogleLogIn = () => {
         googleLogIn()
             .then(result => {
-                toast.success("Register Successful")
+                toast.success("Login Successful")
             })
             .catch(error => {
                 console.log(error);

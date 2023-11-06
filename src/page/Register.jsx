@@ -29,15 +29,15 @@ const Register = () => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
     const [url, setUrl] = useState('')
+    const [password, setPassword] = useState('')
 
 
 
 
     const handleRegister = e => {
         e.preventDefault()
-        console.log('click');
+        
 
         if (password.length < 6) {
             // setError('Password should be at least 6 characters or longer')
@@ -52,6 +52,7 @@ const Register = () => {
             toast.error('Password should have at least one special character')
             return
         }
+        
 
         createUser(email, password)
             .then(result => {
@@ -109,7 +110,8 @@ const Register = () => {
                         <form className="flex flex-col gap-2" onSubmit={handleRegister}>
                             <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="text" name="name" placeholder="Your name" onBlur={e => setName(e.target.value)} required />
                             <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" onBlur={e => setEmail(e.target.value)} required />
-                            <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="url" name="url" placeholder="PhotoUrl" onBlur={e => setPassword(e.target.value)} required />
+                            <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="url" name="url" placeholder="PhotoUrl" onBlur={e => setUrl(e.target.value)} required />
+                            <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="password" name="password" placeholder="Password" onBlur={e => setPassword(e.target.value)} required />
                             <button type="submit" className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300">Register</button>
                         </form>
 

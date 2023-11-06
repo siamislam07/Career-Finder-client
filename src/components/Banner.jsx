@@ -5,7 +5,7 @@ import profile from "../assets/animationJson/profile.gif"
 const Banner = () => {
     return (
         <ContentCenter>
-            
+
             <div className="hero min-h-[600px]" style={{ backgroundImage: 'url(https://cdn.pixabay.com/photo/2022/11/09/08/32/job-7580056_960_720.png)' }}>
                 <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content gap-10 flex-col md:flex-row lg:flex-row">
@@ -26,7 +26,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-
+            
         </ContentCenter>
     );
 };
