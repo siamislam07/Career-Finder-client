@@ -62,25 +62,25 @@ const SideBar = () => {
                             </a>
                         </li>
 
-                        <li><a onClick={handleLogOut} className="mt-1 rounded-lg text-lg font-extralight">Logout</a></li>
+                        
                     </ul>
                 </div>
                 : ''
         }
 
 
-            <li><NavLink to='/' onClick={navigate} className="mt-1 rounded-lg text-lg font-extralight">Home</NavLink></li>
-            { user ? "": <><li><NavLink to='/login' onClick={navigate2} className='rounded-lg text-lg font-extralight'>login</NavLink></li>
-            <li><NavLink to='/register' onClick={navigate3} className="rounded-lg text-lg font-extralight">Register</NavLink></li>
+            <li><NavLink to='/'  className="mt-1 rounded-lg text-lg font-extralight">Home</NavLink></li>
+            { user ? "": <><li><NavLink to='/login'  className='rounded-lg text-lg font-extralight'>login</NavLink></li>
+            <li><NavLink to='/register'  className="rounded-lg text-lg font-extralight">Register</NavLink></li>
             </>}
 
             {user && <>
-                <li><NavLink to='/addjob' onClick={navigate3} className="rounded-lg text-lg font-extralight">Add Job</NavLink></li>
-                <li><NavLink to='/myjobs' onClick={navigate3} className="rounded-lg text-lg font-extralight">My Jobs</NavLink></li>
-                <li><NavLink to='/appliedjobs' onClick={navigate3} className="rounded-lg text-lg font-extralight">Applied Jobs</NavLink></li>
-                <li><NavLink to='/alljobs' onClick={navigate3} className="rounded-lg text-lg font-extralight">All Jobs</NavLink></li>
-                <li><NavLink to='/blogs' onClick={navigate3} className="rounded-lg text-lg font-extralight">Blogs</NavLink></li>
-            
+                <li><NavLink to='/addjob'  className="rounded-lg text-lg font-extralight">Add Job</NavLink></li>
+                <li><NavLink to='/myjobs'  className="rounded-lg text-lg font-extralight">My Jobs</NavLink></li>
+                <li><NavLink to='/appliedjobs' className="rounded-lg text-lg font-extralight">Applied Jobs</NavLink></li>
+                <li><NavLink to='/alljobs'  className="rounded-lg text-lg font-extralight">All Jobs</NavLink></li>
+                <li><NavLink to='/blogs'  className="rounded-lg text-lg font-extralight">Blogs</NavLink></li>
+                <li><a onClick={handleLogOut} className=" rounded-lg text-lg font-extralight">Logout</a></li>
             </>
 
             }

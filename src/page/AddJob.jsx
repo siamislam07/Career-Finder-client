@@ -4,6 +4,7 @@ import { DatePicker } from 'antd';
 import axios from "axios";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import Footer from "../components/Footer";
 
 const { RangePicker } = DatePicker
 
@@ -167,6 +168,7 @@ const AddJob = () => {
                 </form>
 
             </div>
+            <Footer />
         </ContentCenter>
     );
 };

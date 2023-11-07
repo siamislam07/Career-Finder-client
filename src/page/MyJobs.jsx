@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 import useAxios from "../hooks/useAxios";
 import useAuth from "../hooks/useAuth";
+import Footer from "../components/Footer";
 
 const MyJobs = () => {
     const {user} = useAuth()
@@ -65,6 +66,9 @@ const MyJobs = () => {
                     </tbody>
                 </table>
             </div>
+
+
+            <Footer />
         </ContentCenter>
     );
 };

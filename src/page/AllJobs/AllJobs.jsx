@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import ContentCenter from "../../utilites/ContentCenter.jsx/ContentCenter";
 import JobsRow from "./JobsRow";
+import Footer from "../../components/Footer";
 
 const AllJobs = () => {
     const [data, setData] = useState([]);
@@ -88,6 +89,8 @@ const AllJobs = () => {
                     </tbody>
                 </table>
             </div>
+
+            <Footer />
         </ContentCenter>
     );
 };

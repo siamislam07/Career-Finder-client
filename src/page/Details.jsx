@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 import ApplyModal from "../components/ApplyModal";
+import Footer from "../components/Footer";
 
 const Details = () => {
     const details = useLoaderData()
@@ -50,6 +51,8 @@ const Details = () => {
                 </div>
             </div>
 
+
+            <Footer />
         </ContentCenter>
     );
 };

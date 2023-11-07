@@ -1,9 +1,13 @@
+import Footer from "../components/Footer";
+import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 
 const AppliedJobs = () => {
     return (
-        <div>
+        <ContentCenter>
             applied j obs
-        </div>
+
+            <Footer />
+        </ContentCenter>
     );
 };
 
