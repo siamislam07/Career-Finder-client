@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 import search from '../assets/animationJson/search.gif'
 import profile from "../assets/animationJson/profile.gif"
 import { useState } from "react";

@@ -53,7 +53,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'details/:id',
-                element:<Details />,
+                element:<PrivateRoute><Details /></PrivateRoute>,
                 loader:({params}) => fetch(`http://localhost:5000/api/homeCards/${params.id}`)
             }
 

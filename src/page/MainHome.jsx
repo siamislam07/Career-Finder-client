@@ -5,13 +5,16 @@ import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 
 const MainHome = () => {
   return (
-    <ContentCenter>
+    <>
+      <ContentCenter>
 
-      {/* <Banner /> */}
-      <Tabss />
-      
-    </ContentCenter>
-    
+        {/* <Banner /> */}
+        <Tabss />
+      </ContentCenter>
+        <Footer />
+
+    </>
+
   );
 };
 

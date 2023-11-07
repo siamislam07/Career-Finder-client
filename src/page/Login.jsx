@@ -7,7 +7,7 @@ import github from "../assets/animationJson/github.gif"
 
 
 import { useLottie } from "lottie-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -24,6 +24,9 @@ const Login = () => {
     };
 
     const navigate = useNavigate()
+    const location = useLocation()
+
+    console.log(location);
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -35,7 +38,7 @@ const Login = () => {
         .then(result=>{
             console.log(result);
             toast.success('Login Successful')
-            navigate('/')
+            navigate(location?.state ? location.state : '/')
         })
         .catch(error=>{
             console.log(error);
@@ -47,6 +50,7 @@ const Login = () => {
         githubLogIn()
             .then(result => {
                 toast.success("Login Successful")
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error);
@@ -58,6 +62,7 @@ const Login = () => {
         googleLogIn()
             .then(result => {
                 toast.success("Login Successful")
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error);

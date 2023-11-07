@@ -62,7 +62,7 @@ const Register = () => {
                 .then()
                 .catch()
                 toast.success("Register Successful")
-                navigate('/')
+                navigate(location?.state ? location.state : '/')
                 e.target.reset()
             })
             .catch(error => {
@@ -77,6 +77,7 @@ const Register = () => {
         githubLogIn()
             .then(result => {
                 toast.success("Register Successful")
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error);
@@ -88,6 +89,7 @@ const Register = () => {
         googleLogIn()
             .then(result => {
                 toast.success("Register Successful")
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error);

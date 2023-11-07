@@ -36,7 +36,7 @@ const Modal = () => {
                             </div>
                             <button onClick={handleClicked} className="w-full text-xl my-5 py-2 bg-gradient-to-r from-orange-400 to-red-500 hover:shadow-orange-500/40 text-white font-semibold rounded-lg ">Log In</button>
                             <p className="text-gray-400">Don't Have an Account <button onClick={() => document.getElementById('my_modal_6').showModal()} className="underline text-slate-300">Register</button></p>
-                            <p className="text-center text-2xl text-gray-400 font-light py-2">----or----</p>
+                            
                         </form>
 
                         <div className="flex mt-2  justify-center items-center gap-10  relative">
