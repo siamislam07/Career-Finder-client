@@ -7,7 +7,7 @@ const MainHome = () => {
   return (
     <ContentCenter>
 
-      <Banner />
+      {/* <Banner /> */}
       <Tabss />
       
     </ContentCenter>

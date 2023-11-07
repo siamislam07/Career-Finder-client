@@ -1,14 +1,22 @@
 /* eslint-disable react/prop-types */
 
-const HomeCard = ({ data }) => {
-    console.log(data);
+const HomeCard = ({ data, isMatching }) => {
+
+    const cardStyles = {
+        border: !isMatching ? '' : '2px solid', // Default border style for all cards
+        boxShadow: !isMatching ? 'none' : '0px 0px 101px 4px rgba(62, 90, 173, 0.69)', // Box shadow with glow effect for matching cards
+        opacity: !isMatching ? 0.6 : 1,
+        transition: 'box-shadow 0.5s ease-in-out, opacity 0.5s ease-in-out', // Transition effect for the box shadow
+    };
+
+    // console.log(data);
 
     return (
-        <div className='border w-96 h-[29rem] flex flex-col mx-auto'>
+        <div className='border w-96 h-[29rem] flex flex-col mx-auto rounded-md' style={cardStyles}>
             <div className='p-2 flex-grow'>
                 <div className="avatar items-center rounded-l-3xl  mb-3 flex flex-col">
                     <div className="w-16   rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={data?.profileUrl} />
+                        <img src={data?.photoURL} />
                     </div>
                     <p className='text-xl  p-1'>{data?.name} </p>
                 </div>
@@ -36,7 +44,7 @@ const HomeCard = ({ data }) => {
                 </div>
             </div>
             <div className=' flex mb-2'>
-                <button className='bg-orange-400 text-xl  w-full pt-2 pb-2 rounded-none '>Details</button>
+                <button className='bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-xl  w-full pt-2 pb-2 rounded-none '>Details</button>
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import github from "../assets/animationJson/github.gif"
 
 
 import { useLottie } from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -22,6 +22,8 @@ const Login = () => {
         loop: true,
 
     };
+
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -33,6 +35,7 @@ const Login = () => {
         .then(result=>{
             console.log(result);
             toast.success('Login Successful')
+            navigate('/')
         })
         .catch(error=>{
             console.log(error);
@@ -76,7 +79,7 @@ const Login = () => {
                         <p className="text-sm mt-4">By creating an account or signing in, you understand and agree to Indeed's Terms. You also acknowledge our Cookie and Privacy policies.</p>
 
                         <form className="flex flex-col gap-2" onSubmit={handleLogin}>
-                            <input onBlur={e => setEmail(e.target.value)} className="p-2 duration-300 ring-1 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" required/>
+                            <input onChange={e => setEmail(e.target.value)} className="p-2 duration-300 ring-1 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" required/>
                             <input onBlur={e => setPassword(e.target.value)} className="p-2 duration-300 ring-1 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="password" name="password" placeholder="Password" required/>
                             <button className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300">Login</button>
                         </form>

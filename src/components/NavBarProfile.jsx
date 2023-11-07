@@ -13,13 +13,13 @@ const NavBarProfile = () => {
         <div>
             {
             user ?
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-end tooltip  tooltip-bottom tooltip-secondary"  data-tip={user?.displayName}>
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src={user?.photoURL ?user.photoURL : 'https://i.ibb.co/wC75hKV/user.png'  } />
+                            <img src={user?.photoURL ? user.photoURL : 'https://i.ibb.co/wC75hKV/user.png' } />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64">
+                    <ul tabIndex={0} title={user?.displayName} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-64">
                         <li>
                             <a className="justify-between">
                                 Profile

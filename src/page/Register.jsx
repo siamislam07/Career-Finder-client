@@ -5,7 +5,7 @@ import github from "../assets/animationJson/github.gif"
 import icon from "../assets/animationJson/loginicon.gif"
 
 import { useLottie } from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -23,17 +23,16 @@ const Register = () => {
 
     // user creating and other thinks
 
+    const navigate = useNavigate()
+
     const { createUser, googleLogIn, githubLogIn } = useAuth()
 
-
+   
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [url, setUrl] = useState('')
     const [password, setPassword] = useState('')
-
-
-
 
     const handleRegister = e => {
         e.preventDefault()
@@ -56,11 +55,14 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                toast.success("Register Successful")
                 updateProfile(result.user, {
                     displayName: name,
                     photoURL: url
                 })
+                .then()
+                .catch()
+                toast.success("Register Successful")
+                navigate('/')
                 e.target.reset()
             })
             .catch(error => {
@@ -109,7 +111,7 @@ const Register = () => {
 
                         <form className="flex flex-col gap-2" onSubmit={handleRegister}>
                             <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="text" name="name" placeholder="Your name" onBlur={e => setName(e.target.value)} required />
-                            <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" onBlur={e => setEmail(e.target.value)} required />
+                            <input className="p-2 ring-1 duration-300 ring-violet-600 mt-8 rounded-xl border hover:shadow-lg" type="email" name="email" placeholder="E-mail" onChange={e => setEmail(e.target.value)} required />
                             <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="url" name="url" placeholder="PhotoUrl" onBlur={e => setUrl(e.target.value)} required />
                             <input className="p-2 ring-1 duration-300 ring-violet-500 mt-7 rounded-xl border hover:shadow-lg" type="password" name="password" placeholder="Password" onBlur={e => setPassword(e.target.value)} required />
                             <button type="submit" className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300">Register</button>

@@ -3,10 +3,14 @@ import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter"
 import { DatePicker } from 'antd';
 import axios from "axios";
 import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
 
 const { RangePicker } = DatePicker
 
 const AddJob = () => {
+
+    const {user} = useAuth()
+    // console.log('from add jobs',user.photoURL);
 
     const [dates, setDates] = useState([])
 
@@ -21,11 +25,12 @@ const AddJob = () => {
         const salary = form.salary.value
         const description = form.description.value
         const name = form.name.value
-        const profileUrl = form.profileUrl.value
+        // const profileUrl = form.profileUrl.value
         const BannerUrl = form.BannerUrl.value
         const applicants = form.applicants.value
+        const photoURL = user?.photoURL
 
-        const data = {title ,category,salary, dates, description,applicants,  name, profileUrl, BannerUrl};
+        const data = {title, photoURL ,category,salary, dates, description,applicants,  name,  BannerUrl};
         console.log(data);
 
         axios.post('http://localhost:5000/api/homeCards', data)
@@ -107,7 +112,7 @@ const AddJob = () => {
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="description" placeholder="Description" />
+                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="description" placeholder="Job Description" />
 
                             </label>
                         </div>
@@ -131,7 +136,7 @@ const AddJob = () => {
                     </div>
 
 
-                    <div className="md:flex gap-5 mb-5">
+                    {/* <div className="md:flex gap-5 mb-5">
 
                     
 
@@ -141,7 +146,7 @@ const AddJob = () => {
 
                             </label>
                         </div>
-                    </div>
+                    </div> */}
                     <button type="submit" className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300 w-full">Publish</button>
                 </form>
 
