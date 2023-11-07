@@ -25,12 +25,13 @@ const AddJob = () => {
         const salary = form.salary.value
         const description = form.description.value
         const name = form.name.value
-        // const profileUrl = form.profileUrl.value
         const BannerUrl = form.BannerUrl.value
         const applicants = form.applicants.value
         const photoURL = user?.photoURL
+        const experienceLevel = form.experienceLevel.value
+        const companyLocation = form.CompanyLocation.value
 
-        const data = {title, photoURL ,category,salary, dates, description,applicants,  name,  BannerUrl};
+        const data = {title, photoURL ,category,salary, dates, description,applicants,  name,  BannerUrl,experienceLevel, companyLocation};
         console.log(data);
 
         axios.post('http://localhost:5000/api/homeCards', data)
@@ -136,17 +137,32 @@ const AddJob = () => {
                     </div>
 
 
-                    {/* <div className="md:flex gap-5 mb-5">
+                    <div className="md:flex gap-5 mb-5">
 
                     
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="url" name="profileUrl" placeholder="Profile pic Url" />
+                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="CompanyLocation" placeholder="CompanyLocation" />
 
                             </label>
                         </div>
-                    </div> */}
+
+
+                        <div className="form-control md:w-1/2 ">
+                            <label className=" mt-5">
+                                <select required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="experienceLevel" >
+                                    <option value="" hidden>Experience Level</option>
+                                    <option className="dark:bg-transparent" value="On Site">Entry Level</option>
+                                    <option value="Remote">Junior</option>
+                                    <option value="Part-Time">Mid-Level</option>
+                                    <option value="Hybrid">Senior</option>
+
+                                </select>
+
+                            </label>
+                        </div>
+                    </div>
                     <button type="submit" className="bg-gradient-to-r  from-violet-600 to-indigo-600 text-white font-semibold rounded-xl py-2 mt-5 shadow-lg hover:scale-105 duration-300 w-full">Publish</button>
                 </form>
 

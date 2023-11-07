@@ -6,13 +6,14 @@ import 'react-tabs/style/react-tabs.css';
 import HomeCard from './HomeCard';
 import useAxios from '../../hooks/useAxios';
 import Banner from '../Banner';
+import ContentCenter from '../../utilites/ContentCenter.jsx/ContentCenter';
 
 
 const Tabss = () => {
     const [data, setData] = useState([]);
 
     // filter state
-    
+
     const [searchTerm, setSearchTerm] = useState('')
 
     // console.log(data);
@@ -26,7 +27,7 @@ const Tabss = () => {
         axios.get(apiUrl)
             .then(res => {
                 setData(res.data)
-                
+
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -34,7 +35,7 @@ const Tabss = () => {
 
     }, [apiUrl, axios])
 
-    
+
 
     const filteredData = data.map((card) => {
         const lowerCaseTitle = card.title.toLowerCase();
@@ -49,20 +50,22 @@ const Tabss = () => {
 
     return (
         <div >
-            
+
             <Banner onSearch={setSearchTerm} />
-            <div className='mt-56 mb-56  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            
+                <div className='mt-56 mb-56  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 
-                
-                {filteredData.map((card, index) => (
-                    <HomeCard
-                        key={index}
-                        data={card}
-                        isMatching={card.isMatching} 
-                    />
-                ))}
 
-            </div>
+                    {filteredData.map((card, index) => (
+                        <HomeCard
+                            key={index}
+                            data={card}
+                            isMatching={card.isMatching}
+                        />
+                    ))}
+
+                </div>
+            
         </div>
     );
 };

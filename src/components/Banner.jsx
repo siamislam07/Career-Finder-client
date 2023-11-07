@@ -13,10 +13,10 @@ const Banner = ({ onSearch }) => {
     }
 
     return (
-        <ContentCenter>
+        <>
 
-            <div className="hero min-h-[600px]" style={{ backgroundImage: 'url(https://cdn.pixabay.com/photo/2022/11/09/08/32/job-7580056_960_720.png)' }}>
-                <div className="hero-overlay bg-opacity-70"></div>
+            <div className="hero min-h-[600px]" style={{ backgroundImage: 'url(https://i.ibb.co/9qgwBMB/job-search-remotive-home.png)' }}>
+                <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content gap-10 flex-col md:flex-row lg:flex-row">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-white text-5xl font-bold font-serif">Find Your Dream Job</h1>
@@ -39,7 +39,7 @@ const Banner = ({ onSearch }) => {
                 </div>
             </div>
 
-        </ContentCenter>
+        </>
     );
 };
 

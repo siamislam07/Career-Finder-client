@@ -11,6 +11,7 @@ import AppliedJobs from "../page/AppliedJobs"
 import ErrorPage from "../components/ErrorPage"
 import PrivateRoute from "./PrivateRoute"
 import AllJobs from "../page/AllJobs/AllJobs"
+import Details from "../page/Details"
 
 const Routes = createBrowserRouter([
     {
@@ -50,6 +51,11 @@ const Routes = createBrowserRouter([
                 path:'alljobs',
                 element:<AllJobs />
             },
+            {
+                path: 'details/:id',
+                element:<Details />,
+                loader:({params}) => fetch(`http://localhost:5000/api/homeCards/${params.id}`)
+            }
 
         ]
     }

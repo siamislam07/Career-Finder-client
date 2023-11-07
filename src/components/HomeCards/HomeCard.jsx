@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const HomeCard = ({ data, isMatching }) => {
 
     const cardStyles = {
@@ -44,7 +46,9 @@ const HomeCard = ({ data, isMatching }) => {
                 </div>
             </div>
             <div className=' flex mb-2'>
-                <button className='bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-xl  w-full pt-2 pb-2 rounded-none '>Details</button>
+                <Link className="w-full" to={`/details/${data._id}`}>
+                    <button className='font-semibold py-2 px-6 mt-6 block mx-auto border-r-0 border-l-0 hover:bg-violet-500-600 hover:shadow-md focus:outline-none btn btn-outline btn-default pt-2 border-t-slate-800 border-b-blue-800 border-neutral normal-case text-lg  transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none w-full rounded-none '>Details</button>
+                    </Link>
             </div>
         </div>
     );
