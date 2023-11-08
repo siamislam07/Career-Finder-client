@@ -6,55 +6,61 @@ import MainHome from "../page/MainHome"
 import Blogs from "../page/Blogs"
 import AddJob from "../page/addjob"
 import MyJobs from "../page/MyJobs/MyJobs"
-import AppliedJobs from "../page/AppliedJobs"
+import AppliedJobs from "../page/AppliedJobs/AppliedJobs"
 
 import ErrorPage from "../components/ErrorPage"
 import PrivateRoute from "./PrivateRoute"
 import AllJobs from "../page/AllJobs/AllJobs"
 import Details from "../page/Details"
+import Update from "../page/Update"
 
 const Routes = createBrowserRouter([
     {
         path: '/',
         element: <Home />,
-        errorElement:<ErrorPage />,
+        errorElement: <ErrorPage />,
         children: [
             {
-                path:'/',
-                element:<MainHome></MainHome>
+                path: '/',
+                element: <MainHome></MainHome>
             },
             {
                 path: 'login',
                 element: <Login />
             },
             {
-                path:'register',
-                element:<Register />
+                path: 'register',
+                element: <Register />
             },
             {
-                path:'blogs',
-                element:<Blogs></Blogs>
+                path: 'blogs',
+                element: <Blogs></Blogs>
             },
             {
-                path:'addjob',
-                element:<PrivateRoute><AddJob /></PrivateRoute>
+                path: 'addjob',
+                element: <PrivateRoute><AddJob /></PrivateRoute>
             },
             {
-                path:'myjobs',
-                element:<PrivateRoute><MyJobs /></PrivateRoute>
+                path: 'myjobs',
+                element: <PrivateRoute><MyJobs /></PrivateRoute>
             },
             {
-                path:'appliedjobs',
-                element:<AppliedJobs />
+                path: 'update/:id',
+                element: <Update></Update>,
+                loader: ({params}) => fetch(`http://localhost:5000/api/homeCards/${params.id}`)
             },
             {
-                path:'alljobs',
-                element:<AllJobs />
+                path: 'appliedjobs',
+                element: <AppliedJobs />
+            },
+            {
+                path: 'alljobs',
+                element: <AllJobs />
             },
             {
                 path: 'details/:id',
-                element:<PrivateRoute><Details /></PrivateRoute>,
-                loader:({params}) => fetch(`http://localhost:5000/api/homeCards/${params.id}`)
+                element: <PrivateRoute><Details /></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/homeCards/${params.id}`)
             }
 
         ]

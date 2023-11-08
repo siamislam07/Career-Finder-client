@@ -4,8 +4,8 @@ import MainHome from "./page/MainHome";
 import Footer from "./components/Footer";
 
 
-function Home() {
 
+function Home() {
 
       
   return (
@@ -14,7 +14,7 @@ function Home() {
 
         <MainHome></MainHome>
         
-        <Outlet></Outlet>
+        <Outlet ></Outlet>
       </Main>
     </>
   )

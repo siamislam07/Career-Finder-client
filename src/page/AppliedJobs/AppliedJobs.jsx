@@ -1,5 +1,5 @@
-import Footer from "../components/Footer";
-import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
+import Footer from "../../components/Footer";
+import ContentCenter from "../../utilites/ContentCenter.jsx/ContentCenter";
 
 const AppliedJobs = () => {
     return (

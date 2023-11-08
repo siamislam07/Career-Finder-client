@@ -14,7 +14,7 @@ const HomeCard = ({ data, isMatching }) => {
     // console.log(data);
 
     return (
-        <div className='border w-96 h-[29rem] flex flex-col mx-auto rounded-md' style={cardStyles}>
+        <div className='border  h-[29rem] flex flex-col mx-auto rounded-md' style={cardStyles}>
             <div className='p-2 flex-grow'>
                 <div className="avatar items-center rounded-l-3xl  mb-3 flex flex-col">
                     <div className="w-16   rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

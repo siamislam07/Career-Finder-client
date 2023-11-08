@@ -1,23 +1,25 @@
+import { useLoaderData } from "react-router-dom";
+import Footer from "../components/Footer";
+import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 import { useState } from "react";
-import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter"
 import { DatePicker } from 'antd';
-import axios from "axios";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
-import Footer from "../components/Footer";
-
+import axios from "axios";
 const { RangePicker } = DatePicker
 
-const AddJob = () => {
-    
+const Update = () => {
     const { user } = useAuth()
-    // console.log('from add jobs',user.photoURL);
-
     const [dates, setDates] = useState([])
-    console.log(dates);
+    
+    const data = useLoaderData()
+    const { _id, title, photoURL, email, category, salary,   description, applicants, name, BannerUrl, experienceLevel, companyLocation } = data
+
+    console.log(data);
 
 
     const handleSubmit = (e) => {
+
         e.preventDefault()
 
 
@@ -35,24 +37,28 @@ const AddJob = () => {
         const experienceLevel = form.experienceLevel.value
         const companyLocation = form.CompanyLocation.value
 
-        const data = { title, photoURL, email, category, salary, dates, description, applicants, name, BannerUrl, experienceLevel, companyLocation };
-        console.log(data);
+        const UpdateData = { title, photoURL, email, category, salary, dates, description, applicants, name, BannerUrl, experienceLevel, companyLocation };
+        console.log(UpdateData);
 
-        axios.post('http://localhost:5000/api/homeCards', data)
+        axios.put(`http://localhost:5000/api/homeCards/${_id}`, UpdateData)
             .then(data => {
-                if (data.data.insertedId) {
-                    toast.success('Jobs Published Successfully ')
+                console.log(data);
+                if (data.status === 200) {
+                    toast.success('Jobs Update Successfully ')
+                }
+            })
+            .catch(error=>{
+                console.log(error);
+                if (data.status !== 200) {
+                    toast.error('Server busy ')
                 }
             })
     }
 
-
-
-
     return (
         <ContentCenter>
             <div className="p-24    shadow-2xl mt-10">
-                <h1 className="text-3xl font-extrabold">Publish Your Jobs</h1>
+                <h1 className="text-3xl font-extrabold">Update Your Jobs Circular</h1>
                 <form onSubmit={handleSubmit}>
                     {/* form name and brandName row */}
                     <div className="md:flex gap-5 mb-5 ">
@@ -60,13 +66,13 @@ const AddJob = () => {
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
 
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="title" placeholder="Job Title" />
+                                <input defaultValue={title} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="title" placeholder="Job Title" />
                             </label>
                         </div>
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <select required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="category" >
+                                <select defaultValue={category} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="category" >
                                     <option value="" hidden>Job Category</option>
                                     <option className="dark:bg-transparent" value="On Site">On Site</option>
                                     <option value="Remote">Remote</option>
@@ -83,16 +89,16 @@ const AddJob = () => {
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="salary" placeholder="Job Salary $" />
+                                <input defaultValue={salary} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="salary" placeholder="Job Salary $" />
 
                             </label>
                         </div>
 
                         <div className="form-control md:w-1/2 ">
-                            <label className=" mt-5">
+                            <label required className=" mt-5">
 
                                 <RangePicker
-                                    
+                                
                                     onChange={(dates) => {
                                         if (dates && dates.length === 2) {
                                             const [startDate, endDate] = dates.map(date => date.format("MM-DD-YYYY"));
@@ -111,14 +117,14 @@ const AddJob = () => {
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="number" name="applicants" placeholder="Job Applicants by Default zero" />
+                                <input defaultValue={applicants} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="number" name="applicants" placeholder="Job Applicants by Default zero" />
 
                             </label>
                         </div>
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="description" placeholder="Job Description" />
+                                <input defaultValue={description} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="description" placeholder="Job Description" />
 
                             </label>
                         </div>
@@ -128,15 +134,15 @@ const AddJob = () => {
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="name" placeholder="Your Name" />
+                                <input defaultValue={name} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="name" placeholder="Your Name" />
 
                             </label>
                         </div>
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="url" name="BannerUrl" placeholder="Banner Url" />
-
+                                <input defaultValue={BannerUrl} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="url" name="BannerUrl" placeholder="Banner Url" />
+ 
                             </label>
                         </div>
                     </div>
@@ -148,7 +154,7 @@ const AddJob = () => {
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <input required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="CompanyLocation" placeholder="CompanyLocation" />
+                                <input defaultValue={companyLocation} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="CompanyLocation" placeholder="CompanyLocation" />
 
                             </label>
                         </div>
@@ -156,7 +162,7 @@ const AddJob = () => {
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">
-                                <select required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="experienceLevel" >
+                                <select defaultValue={experienceLevel} required className="w-full px-4 py-2 text-lg outline-none border-2 border-gray-400 rounded  duration-200 peer focus:border-indigo-600 focus:ring-1" type="text" name="experienceLevel" >
                                     <option value="" hidden>Experience Level</option>
                                     <option className="dark:bg-transparent" value="On Site">Entry Level</option>
                                     <option value="Remote">Junior</option>
@@ -177,4 +183,4 @@ const AddJob = () => {
     );
 };
 
-export default AddJob;
+export default Update;

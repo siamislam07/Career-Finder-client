@@ -12,6 +12,7 @@ import Login from "../page/Login";
 import NavBarProfile from "./NavBarProfile";
 
 const NavBar = ({ children }) => {
+    
     const { user, logOut } = useContext(AuthContext)
 
     const handleLogOut = () => {

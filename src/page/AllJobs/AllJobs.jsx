@@ -4,7 +4,10 @@ import ContentCenter from "../../utilites/ContentCenter.jsx/ContentCenter";
 import JobsRow from "./JobsRow";
 import Footer from "../../components/Footer";
 
+
+
 const AllJobs = () => {
+   
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('')
 

@@ -69,6 +69,10 @@ const MyJobs = () => {
 
     }
 
+    const handleUpdate = id =>{
+            
+    }
+
 
     return (
         <ContentCenter>
@@ -89,12 +93,15 @@ const MyJobs = () => {
                     <tbody >
 
 
-                        {
+                        {data.length === 0 ?(
+                            <p>You haven't Add Any Job Post</p>
+                        ):
                             data.map((job, index) => <UserJobsRow
                                 key={job._id}
                                 jobData={job}
                                 index={index}
                                 handleDelete={handleDelete}
+                                handleUpdate={handleUpdate}
                             ></UserJobsRow>)
                         }
 
