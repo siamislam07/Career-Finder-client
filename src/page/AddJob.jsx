@@ -38,7 +38,7 @@ const AddJob = () => {
         const data = { title, photoURL, email, category, salary, dates, description, applicants, name, BannerUrl, experienceLevel, companyLocation };
         console.log(data);
 
-        axios.post('http://localhost:5000/api/homeCards', data)
+        axios.post('https://server-nine-red.vercel.app/api/homeCards', data)
             .then(data => {
                 if (data.data.insertedId) {
                     toast.success('Jobs Published Successfully ')

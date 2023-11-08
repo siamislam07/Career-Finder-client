@@ -50,7 +50,7 @@ const MyJobs = () => {
                     'success'
                 )
                 if (proceed) {
-                    fetch(`http://localhost:5000/api/homeCards/${id}`, {
+                    fetch(`https://server-nine-red.vercel.app/api/homeCards/${id}`, {
                         method: 'DELETE'
                     })
 
