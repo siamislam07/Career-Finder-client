@@ -2,10 +2,24 @@ import { useLoaderData } from "react-router-dom";
 import ContentCenter from "../utilites/ContentCenter.jsx/ContentCenter";
 import ApplyModal from "../components/ApplyModal";
 import Footer from "../components/Footer";
+import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Details = () => {
-    const details = useLoaderData()
-    console.log(details);
+    const { user } = useAuth()
+    const details = useLoaderData();
+
+
+    const currentDate = new Date();
+
+    const applicationDeadline = new Date(details.dates[1]);
+
+    const isDeadlinePassed = applicationDeadline < currentDate;
+
+
+    const isOwner = user.email === details.email;
+
     const { experienceLevel, BannerUrl, photoURL, title, salary, description, category, companyLocation } = details
     return (
         <ContentCenter>
@@ -24,7 +38,11 @@ const Details = () => {
 
                     <p className="text-lg mt-4 text-center">Number of Applicants: 50</p>
 
-                    <ApplyModal />
+                    {!isOwner && !isDeadlinePassed && <ApplyModal />}
+                    {isOwner && <p className="text-center mt-5 text-red-500">Post owner cannot apply.</p>}
+                    {isDeadlinePassed && <p className="text-center mt-5 text-red-500">Application deadline has passed.</p>}
+
+
                 </div>
 
 

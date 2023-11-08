@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 
 const ApplyModal = () => {
-
+    
     const { user } = useAuth()
 
     const axios = useAxios()

@@ -42,6 +42,7 @@ const Login = () => {
         })
         .catch(error=>{
             console.log(error);
+            toast.error('Please Try With Google')
             toast.error(error.message)
         })
     }

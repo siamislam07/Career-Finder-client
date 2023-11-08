@@ -5,7 +5,7 @@ import Register from "../page/Register"
 import MainHome from "../page/MainHome"
 import Blogs from "../page/Blogs"
 import AddJob from "../page/addjob"
-import MyJobs from "../page/MyJobs"
+import MyJobs from "../page/MyJobs/MyJobs"
 import AppliedJobs from "../page/AppliedJobs"
 
 import ErrorPage from "../components/ErrorPage"
@@ -41,7 +41,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'myjobs',
-                element:<MyJobs />
+                element:<PrivateRoute><MyJobs /></PrivateRoute>
             },
             {
                 path:'appliedjobs',

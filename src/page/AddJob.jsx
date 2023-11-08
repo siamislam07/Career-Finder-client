@@ -10,37 +10,40 @@ const { RangePicker } = DatePicker
 
 const AddJob = () => {
 
-    const {user} = useAuth()
+    const { user } = useAuth()
     // console.log('from add jobs',user.photoURL);
 
     const [dates, setDates] = useState([])
+    console.log(dates);
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
 
         const form = e.target
 
         const title = form.title.value
-        const category= form.category.value
+        const category = form.category.value
         const salary = form.salary.value
         const description = form.description.value
         const name = form.name.value
         const BannerUrl = form.BannerUrl.value
         const applicants = form.applicants.value
         const photoURL = user?.photoURL
+        const email = user?.email
         const experienceLevel = form.experienceLevel.value
         const companyLocation = form.CompanyLocation.value
 
-        const data = {title, photoURL ,category,salary, dates, description,applicants,  name,  BannerUrl,experienceLevel, companyLocation};
+        const data = { title, photoURL, email, category, salary, dates, description, applicants, name, BannerUrl, experienceLevel, companyLocation };
         console.log(data);
 
         axios.post('http://localhost:5000/api/homeCards', data)
-        .then(data=>{
-            if (data.data.insertedId) {
-                toast.success('Jobs Published Successfully ')
-            }
-        })
+            .then(data => {
+                if (data.data.insertedId) {
+                    toast.success('Jobs Published Successfully ')
+                }
+            })
     }
 
 
@@ -89,15 +92,16 @@ const AddJob = () => {
                             <label className=" mt-5">
 
                                 <RangePicker
+                                    
                                     onChange={(dates) => {
                                         if (dates && dates.length === 2) {
-                                            const [startDate, endDate] = dates.map(date => date.format("DD-MM-YYYY"));
+                                            const [startDate, endDate] = dates.map(date => date.format("MM-DD-YYYY"));
                                             setDates([startDate, endDate]);
                                         } else {
                                             setDates([]);
                                         }
                                     }}
-                                    className= "w-full px-4  py-2 " />
+                                    className="w-full px-4  py-2 " />
                             </label>
                         </div>
                     </div>
@@ -140,7 +144,7 @@ const AddJob = () => {
 
                     <div className="md:flex gap-5 mb-5">
 
-                    
+
 
                         <div className="form-control md:w-1/2 ">
                             <label className=" mt-5">

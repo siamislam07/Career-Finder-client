@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const PrivateRoute = ({children}) => {
     const {isItLoading, user} = useAuth()
@@ -13,7 +14,7 @@ const PrivateRoute = ({children}) => {
         return children
     }
 
-    return  <Navigate state={location.pathname} to='/login'></Navigate>
+    return  <Navigate state={location.pathname} to='/login'> {toast.error('logged In First or Register')}</Navigate>
 };
 
 export default PrivateRoute;
