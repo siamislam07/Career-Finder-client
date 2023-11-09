@@ -56,7 +56,7 @@ const AppliedJobs = () => {
 
 
                         {job.length === 0 ? (
-                            <p>You haven not Add Any Job Post</p>
+                            <p>You haven not Applied Any Job Post</p>
                         ) :
                             job.map((jobs, index) => <AppliedJobsRow
                                 key={jobs._id}
