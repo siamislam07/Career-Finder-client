@@ -10,6 +10,7 @@ const Details = () => {
     const { user } = useAuth()
     const details = useLoaderData();
 
+    const { experienceLevel, BannerUrl, photoURL, title, salary, description, category, companyLocation } = details
 
     const currentDate = new Date();
 
@@ -20,7 +21,6 @@ const Details = () => {
 
     const isOwner = user.email === details.email;
 
-    const { experienceLevel, BannerUrl, photoURL, title, salary, description, category, companyLocation } = details
     return (
         <ContentCenter>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-8 lg:p-12 md:mt-6">
@@ -38,7 +38,7 @@ const Details = () => {
 
                     <p className="text-lg mt-4 text-center">Number of Applicants: 50</p>
 
-                    {!isOwner && !isDeadlinePassed && <ApplyModal />}
+                    {!isOwner && !isDeadlinePassed && <ApplyModal details={details}/>}
                     {isOwner && <p className="text-center mt-5 text-red-500">Post owner cannot apply.</p>}
                     {isDeadlinePassed && <p className="text-center mt-5 text-red-500">Application deadline has passed.</p>}
 

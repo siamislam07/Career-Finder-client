@@ -40,7 +40,9 @@ const Update = () => {
         const UpdateData = { title, photoURL, email, category, salary, dates, description, applicants, name, BannerUrl, experienceLevel, companyLocation };
         console.log(UpdateData);
 
-        axios.put(`https://server-nine-red.vercel.app/api/homeCards/${_id}`, UpdateData)
+        axios.put(`https://job-o8eovvphe-siams-projects-18d0f3fe.vercel.app/api/homeCards/${_id}`, UpdateData,{
+            withCredentials: true
+        })
             .then(data => {
                 console.log(data);
                 if (data.status === 200) {

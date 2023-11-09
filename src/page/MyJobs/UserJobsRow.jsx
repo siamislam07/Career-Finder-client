@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
 import Swal from "sweetalert2";
-import useAxios from "../../hooks/useAxios";
+
 import { Link } from "react-router-dom";
 
-const UserJobsRow = ({ jobData, index, handleDelete, handleUpdate }) => {
+const UserJobsRow = ({ jobData, index, handleDelete }) => {
     const { name, title, salary, _id} = jobData
     
 

@@ -47,7 +47,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'update/:id',
                 element: <Update></Update>,
-                loader: ({params}) => fetch(`https://server-nine-red.vercel.app/api/homeCards/${params.id}`)
+                loader: ({params}) => fetch(`https://job-fawn.vercel.app/api/homeCards/${params.id}`)
             },
             {
                 path: 'appliedjobs',
@@ -60,7 +60,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'details/:id',
                 element: <PrivateRoute><Details /></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://server-nine-red.vercel.app/api/homeCards/${params.id}`)
+                loader: ({ params }) => fetch(`https://job-fawn.vercel.app/api/homeCards/${params.id}`)
             }
 
         ]

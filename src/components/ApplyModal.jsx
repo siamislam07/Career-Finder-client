@@ -1,15 +1,28 @@
+/* eslint-disable react/prop-types */
 
 
 import useAxios from "../hooks/useAxios";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import { useState } from "react";
+import { DatePicker } from "antd";
+import { useLoaderData } from "react-router-dom";
 
-const ApplyModal = () => {
+const { RangePicker } = DatePicker
+
+const ApplyModal = ({details}) => {
     
     const { user } = useAuth()
+    // const details = useLoaderData();
 
-    const axios = useAxios()
-    const url = ('/applied')
+    // const { experienceLevel, BannerUrl, photoURL, title, salary, description, category, companyLocation } = details
+    console.log(details.dates);
+
+    // const [dates, setDates] = useState([])
+
+    // const axios = useAxios()
+    // const url = ('/applied')
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -19,10 +32,15 @@ const ApplyModal = () => {
         const name = form.name.value
         const email = form.email.value
         const resume = form.resume.value
+        const date = details.dates
+        const title = details.title
+        const salary = details.salary
 
-        const data = { name, email, resume }
+        const data = { name, email, resume, date, title, salary }
         console.log(data);
-        axios.post(url, data)
+        axios.post('https://job-fawn.vercel.app/api/applied', data,{
+            withCredentials:true
+        })
             .then(data => {
                 if (data.data.insertedId) {
                     toast.success('Jobs Applied Successfully ')
@@ -62,7 +80,20 @@ const ApplyModal = () => {
                                 <input className="rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none" type="url" name="resume" />
                             </div>
 
-                            
+                            {/* <label className=" mt-5">
+
+                                <RangePicker
+                                    
+                                    onChange={(dates) => {
+                                        if (dates && dates.length === 2) {
+                                            const [startDate, endDate] = dates.map(date => date.format("MM-DD-YYYY"));
+                                            setDates([startDate, endDate]);
+                                        } else {
+                                            setDates([]);
+                                        }
+                                    }}
+                                    className="w-full px-4  py-2 " />
+                            </label> */}
 
                             <button className="btn w-full text-xl my-5 py-2 bg-gradient-to-r from-orange-400 to-red-500 hover:shadow-orange-500/40 text-white font-semibold rounded-lg ">Apply</button>
 

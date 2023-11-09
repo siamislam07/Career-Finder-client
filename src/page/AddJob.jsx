@@ -14,6 +14,7 @@ const AddJob = () => {
     // console.log('from add jobs',user.photoURL);
 
     const [dates, setDates] = useState([])
+
     console.log(dates);
 
 
@@ -38,7 +39,9 @@ const AddJob = () => {
         const data = { title, photoURL, email, category, salary, dates, description, applicants, name, BannerUrl, experienceLevel, companyLocation };
         console.log(data);
 
-        axios.post('https://server-nine-red.vercel.app/api/homeCards', data)
+        axios.post('https://job-fawn.vercel.app/api/homeCards', data,{
+            withCredentials: true
+        })
             .then(data => {
                 if (data.data.insertedId) {
                     toast.success('Jobs Published Successfully ')
@@ -104,6 +107,7 @@ const AddJob = () => {
                                     className="w-full px-4  py-2 " />
                             </label>
                         </div>
+                        
                     </div>
 
                     {/* price and description row */}

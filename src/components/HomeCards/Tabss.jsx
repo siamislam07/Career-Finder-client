@@ -7,6 +7,7 @@ import HomeCard from './HomeCard';
 import useAxios from '../../hooks/useAxios';
 import Banner from '../Banner';
 import ContentCenter from '../../utilites/ContentCenter.jsx/ContentCenter';
+import axios from 'axios';
 
 
 const Tabss = () => {
@@ -18,13 +19,15 @@ const Tabss = () => {
 
     // console.log(data);
 
-    const axios = useAxios()
-    const apiUrl = '/homeCards';
+    // const axios = useAxios()
+    // const apiUrl = '/homeCards';
 
     useEffect(() => {
 
 
-        axios.get(apiUrl)
+        axios.get('https://job-fawn.vercel.app/api/homeCards',{
+            withCredentials: true
+        })
             .then(res => {
                 setData(res.data)
 
@@ -33,7 +36,7 @@ const Tabss = () => {
                 console.error('Error fetching data:', error);
             });
 
-    }, [apiUrl, axios])
+    }, [ ])
 
 
 

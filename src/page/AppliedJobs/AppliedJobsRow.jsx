@@ -1,15 +1,21 @@
 /* eslint-disable react/prop-types */
 
-const AppliedJobsRow = ({ jobData, index, }) => {
-    const { name, title, salary, } = jobData
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+const AppliedJobsRow = ({ jobData, index }) => {
+    const { name, title, salary, resume} = jobData
+    console.log(jobData);
     return (
         <tr  >
             <th>{index + 1}</th>
             <td>{name}</td>
             <td>{title}</td>
-            <td>{jobData.dates[0]}</td>
-            <td>{jobData.dates[1]}</td>
+            <td>{jobData.date[0]}</td>
+            <td>{jobData.date[1]}</td>
             <td>{salary}</td>
+            <td>{resume}</td>
+            {/* <td>{resume}</td> */}
             
         </tr>
     );

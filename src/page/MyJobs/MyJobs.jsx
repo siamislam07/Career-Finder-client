@@ -6,6 +6,8 @@ import Footer from "../../components/Footer";
 import UserJobsRow from "./UserJobsRow";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import axios from "axios";
+
 
 const MyJobs = () => {
     const { user } = useAuth()
@@ -15,14 +17,16 @@ const MyJobs = () => {
     console.log(data);
     console.log(user);
 
-    const axios = useAxios()
-    const apiUrl = (`/user?email=${user?.email}`)
+    // const axios = useAxios()
+    // const apiUrl = (`/user?email=${user?.email}`)
     // const deleteUrl = (`/homeCards/${id}`)
 
     useEffect(() => {
 
 
-        axios.get(apiUrl)
+        axios.get(`https://job-fawn.vercel.app/api/user?email=${user?.email}`,{
+            withCredentials: true
+        })
             .then(res => {
                 setData(res.data)
 
@@ -31,7 +35,7 @@ const MyJobs = () => {
                 console.error('Error fetching data:', error);
             });
 
-    }, [apiUrl, axios])
+    }, [user])
 
     const handleDelete = id => {
         const proceed = Swal.fire({
@@ -50,8 +54,9 @@ const MyJobs = () => {
                     'success'
                 )
                 if (proceed) {
-                    fetch(`https://server-nine-red.vercel.app/api/homeCards/${id}`, {
-                        method: 'DELETE'
+                    fetch(`https://job-fawn.vercel.app/api/homeCards/${id}`, {
+                        method: 'DELETE',
+                        credentials: 'include'
                     })
 
                         .then(res => res.json())
@@ -69,9 +74,7 @@ const MyJobs = () => {
 
     }
 
-    const handleUpdate = id =>{
-            
-    }
+    
 
 
     return (
@@ -101,7 +104,7 @@ const MyJobs = () => {
                                 jobData={job}
                                 index={index}
                                 handleDelete={handleDelete}
-                                handleUpdate={handleUpdate}
+                                
                             ></UserJobsRow>)
                         }
 

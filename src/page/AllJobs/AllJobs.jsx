@@ -3,23 +3,26 @@ import useAxios from "../../hooks/useAxios";
 import ContentCenter from "../../utilites/ContentCenter.jsx/ContentCenter";
 import JobsRow from "./JobsRow";
 import Footer from "../../components/Footer";
+import axios from "axios";
 
 
 
 const AllJobs = () => {
-   
+
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('')
 
     console.log(data);
 
-    const axios = useAxios()
-    const apiUrl = ('/homeCards')
+    // const axios = useAxios()
+    // const apiUrl = ('/homeCards')
 
     useEffect(() => {
 
 
-        axios.get(apiUrl)
+        axios.get('https://job-fawn.vercel.app/api/homeCards',{
+            withCredentials: true
+        })
             .then(res => {
                 setData(res.data)
 
@@ -28,7 +31,7 @@ const AllJobs = () => {
                 console.error('Error fetching data:', error);
             });
 
-    }, [apiUrl, axios])
+    }, [])
 
     const [SearchQuery, setSearchQuery] = useState('')
 
