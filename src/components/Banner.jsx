@@ -14,7 +14,7 @@ const Banner = ({ onSearch }) => {
     return (
         <>
 
-            <div className="hero min-h-[600px]" style={{ backgroundImage: 'url(https://i.ibb.co/9qgwBMB/job-search-remotive-home.png)' }}>
+            <div className="hero min-h-[600px] " style={{ backgroundImage: 'url(https://i.ibb.co/9qgwBMB/job-search-remotive-home.png)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content gap-10 flex-col md:flex-row lg:flex-row">
                     <div className="max-w-md">

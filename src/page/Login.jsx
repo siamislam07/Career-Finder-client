@@ -114,7 +114,7 @@ const Login = () => {
 
                     {/* logo section */}
                     <div className="w-1/2  hidden sm:block">
-                        <span className="w-72 h-[700px] bg-cover  "  >{View}</span>
+                        <span className="w-72 h-[700px] bg-cover " >{View}</span>
                     </div>
                 </div>
             </div>

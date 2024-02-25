@@ -80,7 +80,7 @@ const MyJobs = () => {
     return (
         <ContentCenter>
             <div className="overflow-x-auto mt-14 ">
-                <table className="table text-xl font-serif">
+                <table className="table text-xl font-serif md:mb-80">
                     {/* head */}
                     <thead>
                         <tr className="text-lg">

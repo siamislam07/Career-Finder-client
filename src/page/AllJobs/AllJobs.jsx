@@ -58,7 +58,7 @@ const AllJobs = () => {
 
                     type="text" placeholder="Search With Job Title" className="input input-bordered input-warning w-full max-w-xs" />
             </div>
-            <div className="overflow-x-auto mt-14 ">
+            <div className="overflow-x-auto mt-14  md:mb-72 ">
                 <table className="table text-xl font-serif">
                     {/* head */}
                     <thead>
